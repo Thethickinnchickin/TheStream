@@ -1,0 +1,15 @@
+.frame-container {/* Set the container as the positioning context */
+    width: 100%;
+    height: 100%;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    scroll-behavior: none;
+    z-index: 1;
+  }
+  
+  
