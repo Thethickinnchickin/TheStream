@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Frame from './Components/Frame';
+import IframeDisplay from './Components/Test';
 
 function App() {
   const [data, setData] = useState([]);
@@ -489,10 +490,18 @@ function App() {
     setSelectedLeague(league);
     await fetchData()
   };
+
+  const backToMenu = () => {
+    setNWFrameOpen(false);
+    setNEFrameOpen(false);
+    setSWFrameOpen(false);
+    setSEFrameOpen(false);
+    setMenuOpen(true);
+  }
   
   return (
     <div className="App">
-      <div id="NW">
+      {/* <div id="NW">
         <Frame src={northWest} />   
       </div>
       <div id="NE">
@@ -504,8 +513,9 @@ function App() {
       </div>
       <div id="SE">
         <Frame src={southEast}/>
-      </div>
-      <div className="hidden-side-menu">
+      </div> */}
+      <IframeDisplay/>
+      {/* <div className="hidden-side-menu">
         <div className="invisible-side-button" onClick={handleHover} >
             &lt;
         </div> 
@@ -532,7 +542,7 @@ function App() {
               <button onClick={() => frameRefresh("NW")} className='refresh' ><span>Refresh</span><i></i></button>
               <div className={`menu ${isNWFrameOpen ? 'open' : ''}`}>
                 <ul className='ml-4'>
-                <li><span onClick={() => handleFrameHover("NW")}
+                <li><span onClick={() => backToMenu()}
                  className='back'>&lt;=BACK</span><span className='header'>NorthWest</span></li>
                   {data.map((game) => (
                     <li if id='team' key={game.id} onClick={() =>
@@ -561,7 +571,7 @@ function App() {
               <button onClick={() => frameRefresh("NE")} className='refresh' ><span>Refresh</span><i></i></button>
               <div  className={`menu ${isNEFrameOpen ? 'open' : ''}`}>
                 <ul className='ml-4'>
-                <li><span onClick={() => handleFrameHover("NE")}
+                <li><span onClick={() => backToMenu()}
                  className='back'>&lt;=BACK</span><span className='header'>NorthEast</span></li>
                   {data.map((game) => (                   
                     <li if id='team' key={game.id} onClick={() =>
@@ -589,7 +599,7 @@ function App() {
             <button onClick={() => frameRefresh("SW")} className='refresh' ><span>Refresh</span><i></i></button>
             <div  className={`menu ${isSWFrameOpen ? 'open' : ''}`}>
                 <ul className='ml-4'>
-                <li><span onClick={() => handleFrameHover("SE")}
+                <li><span onClick={() => backToMenu()}
                  className='back'>&lt;=BACK</span><span className='header'>SouthWest</span></li>
                   {data.map((game) => (                   
                     <li if id='team' key={game.id} onClick={() =>
@@ -617,7 +627,7 @@ function App() {
             <button onClick={() => frameRefresh("SE")} className='refresh' ><span>Refresh</span><i></i></button>
               <div onClick={() => handleFrameHover("SE")} className={`menu ${isSEFrameOpen ? 'open' : ''}`}>
                 <ul className='ml-4'>
-                <li><span onClick={() => handleFrameHover("SE")}
+                <li><span onClick={() => backToMenu()}
                  className='back'>&lt;=BACK</span><span className='header'>SouthEast</span></li>
                 {data.map((game) => (   
                     <li if id='team' key={game.id} onClick={() =>
@@ -643,7 +653,7 @@ function App() {
           </ul>
           <button onClick={() => frameRefresh("ALL")} className='refresh' ><span>Refresh ALL Frames</span><i></i></button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
